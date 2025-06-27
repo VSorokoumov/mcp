@@ -232,13 +232,12 @@ async def query_cortex_analyst(
                 "content": [
                     {
                         "type": "text",
-                        "text": query,
+                        "text": query
                     }
-                ],
+                ]
             }
         ],
-        semantic_type: semantic_model,
-        "stream": False,
+        semantic_type: semantic_model
     }
 
     response = requests.post(base_url, headers=headers, json=payload)
