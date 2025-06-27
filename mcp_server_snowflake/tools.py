@@ -220,6 +220,8 @@ async def query_cortex_analyst(
         "Accept": "application/json, text/event-stream",
     }
 
+    print(headers)
+
     if semantic_model.startswith("@") and semantic_model.endswith(".yaml"):
         semantic_type = "semantic_model_file"
     else:
@@ -239,8 +241,12 @@ async def query_cortex_analyst(
         ],
         semantic_type: semantic_model
     }
-
+    
+    print(payload)
+        
     response = requests.post(base_url, headers=headers, json=payload)
+
+    print(response)
 
     if response.status_code == 200:
         return response
