@@ -220,8 +220,6 @@ async def query_cortex_analyst(
         "Accept": "application/json, text/event-stream",
     }
 
-    print(headers)
-
     if semantic_model.startswith("@") and semantic_model.endswith(".yaml"):
         semantic_type = "semantic_model_file"
     else:
@@ -251,7 +249,7 @@ async def query_cortex_analyst(
         raise SnowflakeException(
             tool="Cortex Analyst",
             status_code=response.status_code,
-            message=response.text + ' ' + base_url + ' ' + headers + ' ' + payload,
+            message=response.text + ' ' + str(base_url) + ' ' + str(headers) + ' ' + str(payload),
         )
 
 
