@@ -241,12 +241,8 @@ async def query_cortex_analyst(
         ],
         semantic_type: semantic_model
     }
-    
-    print(payload)
-        
+            
     response = requests.post(base_url, headers=headers, json=payload)
-
-    print(response)
 
     if response.status_code == 200:
         return response
@@ -255,7 +251,7 @@ async def query_cortex_analyst(
         raise SnowflakeException(
             tool="Cortex Analyst",
             status_code=response.status_code,
-            message=response.text,
+            message=response.text + ' ' + base_url + ' ' + headers + ' ' + payload,
         )
 
 
